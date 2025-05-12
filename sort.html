@@ -2,16 +2,23 @@
 <html lang="en">
 
 <head>
+  <!-- Basic Page Setup -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sort List | Multipage Application</title>
+
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
   <div class="container">
+    <!-- Sidebar with navigation links -->
     <aside class="sidebar">
+      <!-- App Logo / Title -->
       <div class="logo">Sortable List 🔃 | Mini App</div>
+
+      <!-- Navigation Menu -->
       <nav class="navigation">
         <ul>
           <li><a href="index.html">User Form 📝</a></li>
@@ -19,25 +26,34 @@
           <li><a href="faq.html">FAQ Accordion ⁉️</a></li>
         </ul>
       </nav>
+
+      <!-- Sidebar Footer -->
       <footer class="sidebar-footer">&copy; 2025 Mini Multipage Application</footer>
     </aside>
 
+    <!-- Main content area -->
     <main class="content">
+      <!-- Page Header -->
       <header>
         <h1>Sortable User List 🔃</h1>
         <p>Click the buttons below to sort or reset the name list with timestamps.</p>
       </header>
 
+      <!-- List Section -->
       <section class="list-container">
+        <!-- Control Buttons -->
         <div class="controls">
           <button id="sortButton" class="btn-primary">Sort Alphabetically</button>
           <button id="resetButton" class="btn-secondary">Reset</button>
         </div>
+
+        <!-- Unordered list where names will be displayed -->
         <ul id="namesList" class="names-list"></ul>
       </section>
     </main>
   </div>
 
+  <!-- JavaScript file for sorting logic -->
   <script src="assets/js/sort.js"></script>
 </body>
 
