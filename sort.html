@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sort List | Multipage Application</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">Sortable List 🔃 | Mini App</div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="index.html">User Form 📝</a></li>
+          <li><a href="sort.html" class="active">Sortable List 🔃</a></li>
+          <li><a href="faq.html">FAQ Accordion ⁉️</a></li>
+        </ul>
+      </nav>
+      <footer class="sidebar-footer">&copy; 2025 Mini Multipage Application</footer>
+    </aside>
+
+    <main class="content">
+      <header>
+        <h1>Sortable User List 🔃</h1>
+        <p>Click the buttons below to sort or reset the name list with timestamps.</p>
+      </header>
+
+      <section class="list-container">
+        <div class="controls">
+          <button id="sortButton" class="btn-primary">Sort Alphabetically</button>
+          <button id="resetButton" class="btn-secondary">Reset</button>
+        </div>
+        <ul id="namesList" class="names-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/sort.js"></script>
+</body>
+
+</html>

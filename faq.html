@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion | Frontend Assignment</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">FAQ ⁉️ | Mini App</div>
+      <nav class="navigation">
+        <ul>
+          <li><a href="index.html">User Form 📝</a></li>
+          <li><a href="sort.html">Sortable List 🔃</a></li>
+          <li><a href="faq.html" class="active">FAQ Accordion ⁉️</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <p>&copy; 2025 Multipage Application</p>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>Frequently Asked Questions ⁉️</h1>
+        <p>Click on a question to reveal the answer.</p>
+      </header>
+
+      <section class="faq-container">
+        <details class="faq-item">
+          <summary>What technologies were used to build this application?</summary>
+          <div class="faq-content">
+            <p>This application was built using only HTML, CSS, and Vanilla JavaScript without any external libraries or frameworks. The layout uses CSS Flexbox and Grid for responsive design.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does the sortable list work?</summary>
+          <div class="faq-content">
+            <p>The sortable list uses JavaScript's Array.sort() method to alphabetically sort the names. When you click the "Sort Alphabetically" button, JavaScript collects all list items, sorts them, and then updates the DOM with the sorted order. No page refresh is needed as it's all handled client-side.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is the form validation done client-side or server-side?</summary>
+          <div class="faq-content">
+            <p>The form validation is done client-side using both HTML5 validation attributes (required, pattern, type) and JavaScript validation. This ensures that data is validated before submission for a better user experience. In a real application, this would typically be paired with server-side validation as well.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is the contact form submission time calculated?</summary>
+          <div class="faq-content">
+            <p>The contact form tracks the time from when a user first interacts with any field until they successfully submit the form. This is done using JavaScript's Date object to capture timestamps and calculate the difference when the form is submitted.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is this accordion using JavaScript?</summary>
+          <div class="faq-content">
+            <p>No, this accordion is built using only HTML and CSS. It leverages the &lt;details&gt; and &lt;summary&gt; HTML elements, which provide native browser support for expanding and collapsing content without requiring JavaScript.</p>
+          </div>
+        </details>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
