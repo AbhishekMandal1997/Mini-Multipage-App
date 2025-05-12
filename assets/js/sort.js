@@ -1,68 +1,98 @@
-// DOM elements
-const sortButton = document.getElementById('sortButton');
-const resetButton = document.getElementById('resetButton');
-const namesList = document.getElementById('namesList');
+//Get our HTML elements
+const buttons = {
+  sort: document.getElementById('sortButton'),
+  reset: document.getElementById('resetButton')
+};
+const cardContainer = document.getElementById('namesList');
 
-// Default and saved names
-const defaultNames = [
-  { name: 'Emma Johnson', submissionTime: '-' },
-  { name: 'James Smith', submissionTime: '-' },
-  { name: 'Olivia Williams', submissionTime: '-' },
-  { name: 'Noah Brown', submissionTime: '-' },
-  { name: 'Sophia Jones', submissionTime: '-' }
+//Setup our initial data
+const sampleNames = [
+  { name: 'Pawan Singh', submissionTime: '-' },
+  { name: 'Pankaj Sudheer', submissionTime: '-' },
+  { name: 'Nagarjun Bedade', submissionTime: '-' },
+  { name: 'Mishti Shukla', submissionTime: '-' },
+  { name: 'Shekhar Suman', submissionTime: '-' }
 ];
-const savedNames = JSON.parse(localStorage.getItem('sortableNames') || '[]');
-const originalNames = [...defaultNames, ...savedNames];
 
-// Render the list
-function renderList(names) {
-  namesList.innerHTML = names
-    .map(nameData => `
-      <li>
-        <span class="name">${nameData.name}</span>
-        <span class="submission-time">${nameData.submissionTime}</span>
-      </li>
-    `)
-    .join('');
+//Get saved names from storage or use empty array if none exist
+const storedNames = JSON.parse(localStorage.getItem('sortableNames') || '[]');
+
+//Combine sample and stored names
+const allNames = [...sampleNames, ...storedNames];
+
+//Create and show our cards
+function showCards(nameList) {
+  // Create HTML for each name
+  const cards = nameList.map(person => `
+      <div class="card">
+          <span class="name">${person.name}</span>
+          <span class="submission-time">${person.submissionTime}</span>
+      </div>
+  `);
+
+  // Add all cards to the container
+  cardContainer.innerHTML = cards.join('');
 }
 
-// Sort the list alphabetically
-function sortAlphabetically() {
-  const sortedNames = [...originalNames].sort((a, b) => a.name.localeCompare(b.name));
-  renderList(sortedNames);
-  toggleButtons(true);
+//Sort names A-Z
+function sortNames() {
+  // Make a copy and sort it
+  const sortedList = [...allNames].sort((a, b) => {
+    return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+  });
+
+  // Show sorted list
+  showCards(sortedList);
+
+  // Update buttons
+  buttons.sort.disabled = true;
+  buttons.reset.disabled = false;
 }
 
-// Reset the list to its original order
-function resetList() {
-  renderList(originalNames);
-  toggleButtons(false);
+//Reset to original order
+function resetNames() {
+  // Show original list
+  showCards(allNames);
+
+  // Update buttons
+  buttons.sort.disabled = false;
+  buttons.reset.disabled = true;
 }
 
-// Toggle button states
-function toggleButtons(isSorted) {
-  sortButton.disabled = isSorted;
-  resetButton.disabled = !isSorted;
-}
-
-// Initialize the list and event listeners
-function initialize() {
-  renderList(originalNames);
-  sortButton.addEventListener('click', sortAlphabetically);
-  resetButton.addEventListener('click', resetList);
-  toggleButtons(false);
-}
-
-// Add fade-in animation
-const style = document.createElement('style');
-style.innerHTML = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+//Add simple animation
+const cardAnimation = `
+  .card {
+      animation: slideIn 0.3s ease-out;
   }
-  li { animation: fadeIn 0.3s ease-out; }
+  @keyframes slideIn {
+      from { 
+          opacity: 0;
+          transform: translateY(-10px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
 `;
-document.head.appendChild(style);
 
-// Initialize on page load
-initialize();
+// Add animation to page
+const styleTag = document.createElement('style');
+styleTag.textContent = cardAnimation;
+document.head.appendChild(styleTag);
+
+//Setup everything when page loads
+function startApp() {
+  // Show initial list
+  showCards(allNames);
+
+  // Add button clicks
+  buttons.sort.addEventListener('click', sortNames);
+  buttons.reset.addEventListener('click', resetNames);
+
+  // Reset button starts disabled
+  buttons.reset.disabled = true;
+}
+
+// Start the app
+startApp();
